@@ -1,0 +1,731 @@
+<!doctype>
+<html>
+    <head>
+        <title>Fabriquons des lecons</title>
+        <meta charset = "utf-8">
+        <style>
+            .titles{
+                color:rgb(5, 0, 68);
+                font-family:Monospace;
+            }
+
+            .G{
+                text-align: center;
+                font-family: Arial;
+                font-size: 30px;
+            }
+
+            table{
+                border-collapse: collapse;
+            }
+
+            tr, th, td{
+                border: 1px solid #dddddd
+            }
+
+            *{
+                text-align:left;
+            }
+            input.MyButton{
+                width: 300px;
+                padding: 20px;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: 150%;
+                background: #3366cc;
+                color: #fff;
+                border: 1px solid #3366cc;
+                border-radius: 10px;
+                box-shadow: 6px 6px 5px #999;
+            }
+            input.MyButton:hover{
+                color: #ffff00;
+                background: #000;
+                border: 1px solid #fff;
+            }
+
+            html {
+                font-family: sans-serif;
+                font-size: 16px;
+            }
+
+            h1 {
+                margin: 1em 0 0.25em 0;
+            }
+
+            input[type=text] {
+                padding: 0.5em;
+            }
+
+            .jsValue, .jqValue {
+                color: red;
+            }
+
+            .titre{
+                padding-left: 100px;
+                padding-right: 100px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .vide{
+                padding-left: 20px;
+                padding-right: 20px;
+                padding-top: 20px;
+                padding-bottom: 20px;
+            }
+
+            .Acitivite{
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            @media print {
+                .noprint {display:none;}
+            }
+        </style>
+    </head>
+    <div class="noprint">
+    <body>
+        <h1 class="titles">Fabriquons des leçons</h1>
+        <hr>
+        <p>Ce programme sert a faire de leçons pour les sauveteurs.<br>
+        Ici, vous pouvez voir les recommmendations pour ce que vous devriez faire dans chaque niveau
+        <a href="https://www.instructornetwork.ca/RedCross/subsection.aspx?Category=42&SubSectionId=197">Instructor Worksheets</a><br>
+        Quel est le niveau du groupe? <input type="text" id="G" onchange="G()"><br>
+        Quelle est la durée de la classe? <input type="text" id="T" onchange="T()"><br>
+        <p> Voici le temps généré par le programme pour chaque activité</p> <p id="insert"></p>
+        Pour utiliser ce programme, entrez ce que vous voulez faire dans le tableau en dessous.<br>
+        </p>
+        <table width="1400">
+            <thead>
+                <tr>
+                    <th>Temps</th>
+                    <th>Activites</th>
+                    <th>Equipement</th>
+                    <th>Formation</th>
+                    <hr>
+                    <tbody>
+                        <td id="table-info">Ici, vous pouvez inserer comebien
+                        de temps que vous voulez que chaques lecons durent.</td>
+                        <td id="table-info">Ici, vous pouvez mettre ce que vous
+                        aller faire durant vos lecons.</td>
+                        <td id="table-info">Ici, vous pouvez mettre quel 
+                        equipements dont vous aurez avoir besoin.</td>
+                        <td id="table-info">Ici, vous pouvez mettre la formation 
+                        dans laquelle vous voulez faire l'activite</td>
+                    </tbody>
+                </tr>
+                <tr>
+                    <td>                        
+                        <label>Temps pour activite 1: </label><br><input type="text" name="Temps 1" id="Tmp1" onchange="Tmp1()"><br>
+                        <textarea class="text" id="PT1" onchange="PT1()"></textarea><br>
+                        <label>Temps pour activite 2: </label><br><input type="text" name="Temps 2" id="Tmp2" onchange="Tmp2()"><br>
+                        <textarea class="text" id="PT2" onchange="PT2()"></textarea><br>
+                        <label>Temps pour activite 3: </label><br><input type="text" name="Temps 3" id="Tmp3" onchange="Tmp3()"><br>
+                        <textarea class="text" id="PT3" onchange="PT3()"></textarea><br>
+                        <label>Temps pour activite 4: </label><br><input type="text" name="Temps 4" id="Tmp4" onchange="Tmp4()"><br>
+                        <textarea class="text" id="PT4" onchange="PT4()"></textarea><br>
+                        <label>Temps pour activite 5: </label><br><input type="text" name="Temps 5" id="Tmp5" onchange="Tmp5()"><br>
+                        <textarea class="text" id="PT5" onchange="PT5()"></textarea><br>
+                        <label>Temps pour activite 6: </label><br><input type="text" name="Temps 6" id="Tmp6" onchange="Tmp6()"><br>
+                        <textarea class="text" id="PT6" onchange="PT6()"></textarea><br>
+                        <label>Temps pour activite 7: </label><br><input type="text" name="Temps 7" id="Tmp7" onchange="Tmp7()"><br>
+                        <textarea class="text" id="PT7" onchange="PT7()"></textarea><br>
+                        <label>Temps pour activite 8: </label><br><input type="text" name="Temps 8" id="Tmp8" onchange="Tmp8()"><br>
+                        <textarea class="text" id="PT8" onchange="PT8()"></textarea><br>
+                        <label>Temps pour activite 9: </label><br><input type="text" name="Temps 9" id="Tmp9" onchange="Tmp9()"><br>
+                        <textarea class="text" id="PT9" onchange="PT9()"></textarea><br>
+                        <label>Temps pour activite 10: </label><br><input type="text" name="Temps 10" id="Tmp10" onchange="Tmp10()"><br>
+                        <textarea class="text" id="PT10" onchange="PT10()"></textarea><br>
+                    </td>
+                    <td>
+                        <label>Activite 1: </label><br><input type="text" name="Activite 1" id="Act1" onchange="Act1()"><br>
+                        <textarea class="text" id="PA1" onchange="PA1()"></textarea><br>
+                        <label>Activite 2: </label><br><input type="text" name="Activite 2" id="Act2" onchange="Act2()"><br>
+                        <textarea class="text" id="PA2" onchange="PA2()"></textarea><br>
+                        <label>Activite 3: </label><br><input type="text" name="Activite 3" id="Act3" onchange="Act3()"><br>
+                        <textarea class="text" id="PA3" onchange="PA3()"></textarea><br>
+                        <label>Activite 4: </label><br><input type="text" name="Activite 4" id="Act4" onchange="Act4()"><br>
+                        <textarea class="text" id="PA4" onchange="PA4()"></textarea><br>
+                        <label>Activite 5: </label><br><input type="text" name="Activite 5" id="Act5" onchange="Act5()"><br>
+                        <textarea class="text" id="PA5" onchange="PA5()"></textarea><br>
+                        <label>Activite 6: </label><br><input type="text" name="Activite 6" id="Act6" onchange="Act6()"><br>
+                        <textarea class="text" id="PA6" onchange="PA6()"></textarea><br>
+                        <label>Activite 7: </label><br><input type="text" name="Activite 7" id="Act7" onchange="Act7()"><br>
+                        <textarea class="text" id="PA7" onchange="PA7()"></textarea><br>
+                        <label>Activite 8: </label><br><input type="text" name="Activite 8" id="Act8" onchange="Act8()"><br>
+                        <textarea class="text" id="PA8" onchange="PA8()"></textarea><br>
+                        <label>Activite 9: </label><br><input type="text" name="Activite 9" id="Act9" onchange="Act9()"><br>
+                        <textarea class="text" id="PA9" onchange="PA9()"></textarea><br>
+                        <label>Activite 10: </label><br><input type="text" name="Activite 10" id="Act10" onchange="Act10()"><br>
+                        <textarea class="text" id="PA10" onchange="PA10()"></textarea><br>
+                    </td>
+                    <td>
+                        <label>Equipement pour activite 1: </label><br><input type="text" name="Eqp1" id="Eqp1" onchange="Eqp1()"><br>
+                        <textarea class="text" id="PE1" onchange="PE1()"></textarea><br>
+                        <label>Equipement pour activite 2: </label><br><input type="text" name="Eqp2" id="Eqp2" onchange="Eqp2()"><br>
+                        <textarea class="text" id="PE2" onchange="PE2()"></textarea><br>
+                        <label>Equipement pour activite 3: </label><br><input type="text" name="Eqp3" id="Eqp3" onchange="Eqp3()"><br>
+                        <textarea class="text" id="PE3" onchange="PE3()"></textarea><br>
+                        <label>Equipement pour activite 4: </label><br><input type="text" name="Eqp4" id="Eqp4" onchange="Eqp4()"><br>
+                        <textarea class="text" id="PE4" onchange="PE4()"></textarea><br>
+                        <label>Equipement pour activite 5: </label><br><input type="text" name="Eqp5" id="Eqp5" onchange="Eqp5()"><br>
+                        <textarea class="text" id="PE5" onchange="PE5()"></textarea><br>
+                        <label>Equipement pour activite 6: </label><br><input type="text" name="Eqp6" id="Eqp6" onchange="Eqp6()"><br>
+                        <textarea class="text" id="PE6" onchange="PE6()"></textarea><br>
+                        <label>Equipement pour activite 7: </label><br><input type="text" name="Eqp7" id="Eqp7" onchange="Eqp7()"><br>
+                        <textarea class="text" id="PE7" onchange="PE7()"></textarea><br>
+                        <label>Equipement pour activite 8: </label><br><input type="text" name="Eqp8" id="Eqp8" onchange="Eqp8()"><br>
+                        <textarea class="text" id="PE8" onchange="PE8()"></textarea><br>
+                        <label>Equipement pour activite 9: </label><br><input type="text" name="Eqp9" id="Eqp9" onchange="Eqp9()"><br>
+                        <textarea class="text" id="PE9" onchange="PE9()"></textarea><br>
+                        <label>Equipement pour activite 10: </label><br><input type="text" name="Eqp10" id="Eqp10" onchange="Eqp10()"><br>
+                        <textarea class="text" id="PE10" onchange="PE10()"></textarea><br>
+                    </td>
+                    <td>
+                        <label>Formation pour activite 1: </label><br><input type="text" name="For1" id="For1" onchange="For1()"><br>
+                        <textarea class="text" id="PF1" onchange="PF1()"></textarea><br>
+                        <label>Formation pour activite 2: </label><br><input type="text" name="For2" id="For2" onchange="For2()"><br>
+                        <textarea class="text" id="PF2" onchange="PF2()"></textarea><br>
+                        <label>Formation pour activite 3: </label><br><input type="text" name="For3" id="For3" onchange="For3()"><br>
+                        <textarea class="text" id="PF3" onchange="PF3()"></textarea><br>
+                        <label>Formation pour activite 4: </label><br><input type="text" name="For4" id="For4" onchange="For4()"><br>
+                        <textarea class="text" id="PF4" onchange="PF4()"></textarea><br>
+                        <label>Formation pour activite 5: </label><br><input type="text" name="For5" id="For5" onchange="For5()"><br>
+                        <textarea class="text" id="PF5" onchange="PF5()"></textarea><br>
+                        <label>Formation pour activite 6: </label><br><input type="text" name="For6" id="For6" onchange="For6()"><br>
+                        <textarea class="text" id="PF6" onchange="PF6()"></textarea><br>
+                        <label>Formation pour activite 7: </label><br><input type="text" name="For7" id="For7" onchange="For7()"><br>
+                        <textarea class="text" id="PF7" onchange="PF7()"></textarea><br>
+                        <label>Formation pour activite 8: </label><br><input type="text" name="For8" id="For8" onchange="For8()"><br>
+                        <textarea class="text" id="PF8" onchange="PF8()"></textarea><br>
+                        <label>Formation pour activite 9: </label><br><input type="text" name="For9" id="For9" onchange="For9()"><br>
+                        <textarea class="text" id="PF9" onchange="PF9()"></textarea><br>
+                        <label>Formation pour activite 10: </label><br><input type="text" name="For10" id="For10" onchange="For10()"><br>
+                        <textarea class="text" id="PF10" onchange="PF10()"></textarea><br>
+                    </td>
+                </tr>
+             </thead>
+         </table>
+        <hr>
+    </div>
+        <table>
+            <h1 id=GV class="G"></h1><br>
+             <thead>
+                   <tr>
+                    <th class="vide">          </th>
+                    <th class="titre">Temps</th>
+                    <th class="titre">Activite</th>
+                    <th class="titre">Equipement</th>
+                    <th class="titre">Formation</th>
+                </tr>
+            </thead>
+                <tr>
+                    <td class="Activite">Activite 1</td>
+                    <td id=TmpV1 class="titre" maximum-width="280"></td>
+                    <td id=ActV1 class="titre" width="280"></td>
+                    <td id=EqpV1 class="titre" width="280"></td>
+                    <td id=ForV1 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV1 class="titre" width="280"></td>
+                    <td id=PAV1 class="titre" width="280"></td>
+                    <td id=PEV1 class="titre" width="280"></td>
+                    <td id=PFV1 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 2</td>
+                    <td id=TmpV2 class="titre" width="280"></td>
+                    <td id=ActV2 class="titre" width="280"></td>
+                    <td id=EqpV2 class="titre" width="280"></td>
+                    <td id=ForV2 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV2 class="titre" width="280"></td>
+                    <td id=PAV2 class="titre" width="280"></td>
+                    <td id=PEV2 class="titre" width="280"></td>
+                    <td id=PFV2 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 3</td>
+                    <td id=TmpV3 class="titre" width="280"></td>
+                    <td id=ActV3 class="titre" width="280"></td>
+                    <td id=EqpV3 class="titre" width="280"></td>
+                    <td id=ForV3 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV3 class="titre" width="280"></td>
+                    <td id=PAV3 class="titre" width="280"></td>
+                    <td id=PEV3 class="titre" width="280"></td>
+                    <td id=PFV3 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 4</td>
+                    <td id=TmpV4 class="titre" width="280"></td>
+                    <td id=ActV4 class="titre" width="280"></td>
+                    <td id=EqpV4 class="titre" width="280"></td>
+                    <td id=ForV4 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV4 class="titre" width="280"></td>
+                    <td id=PAV4 class="titre" width="280"></td>
+                    <td id=PEV4 class="titre" width="280"></td>
+                    <td id=PFV4 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 5</td>
+                    <td id=TmpV5 class="titre" width="280"></td>
+                    <td id=ActV5 class="titre" width="280"></td>
+                    <td id=EqpV5 class="titre" width="280"></td>
+                    <td id=ForV5 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV5 class="titre" width="280"></td>
+                    <td id=PAV5 class="titre" width="280"></td>
+                    <td id=PEV5 class="titre" width="280"></td>
+                    <td id=PFV5 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 6</td>
+                    <td id=TmpV6 class="titre" width="280"></td>
+                    <td id=ActV6 class="titre" width="280"></td>
+                    <td id=EqpV6 class="titre" width="280"></td>
+                    <td id=ForV6 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV6 class="titre" width="280"></td>
+                    <td id=PAV6 class="titre" width="280"></td>
+                    <td id=PEV6 class="titre" width="280"></td>
+                    <td id=PFV6 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 7</td>
+                    <td id=TmpV7 class="titre" width="280"></td>
+                    <td id=ActV7 class="titre" width="280"></td>
+                    <td id=EqpV7 class="titre" width="280"></td>
+                    <td id=ForV7 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV7 class="titre" width="280"></td>
+                    <td id=PAV7 class="titre" width="280"></td>
+                    <td id=PEV7 class="titre" width="280"></td>
+                    <td id=PFV7 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 8</td>
+                    <td id=TmpV8 class="titre" width="280"></td>
+                    <td id=ActV8 class="titre" width="280"></td>
+                    <td id=EqpV8 class="titre" width="280"></td>
+                    <td id=ForV8 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV8 class="titre" width="280"></td>
+                    <td id=PAV8 class="titre" width="280"></td>
+                    <td id=PEV8 class="titre" width="280"></td>
+                    <td id=PFV8 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 9</td>
+                    <td id=TmpV9 class="titre" width="280"></td>
+                    <td id=ActV9 class="titre" width="280"></td>
+                    <td id=EqpV9 class="titre" width="280"></td>
+                    <td id=ForV9 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV9 class="titre" width="280"></td>
+                    <td id=PAV9 class="titre" width="280"></td>
+                    <td id=PEV9 class="titre" width="280"></td>
+                    <td id=PFV9 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">Activite 10</td>
+                    <td id=TmpV10 class="titre" width="280"></td>
+                    <td id=ActV10 class="titre" width="280"></td>
+                    <td id=EqpV10 class="titre" width="280"></td>
+                    <td id=ForV10 class="titre" width="280"></td>
+                </tr>
+                <tr>
+                    <td class="Activite">          </td>
+                    <td id=PTV10 class="titre" width="280"></td>
+                    <td id=PAV10 class="titre" width="280"></td>
+                    <td id=PEV10 class="titre" width="280"></td>
+                    <td id=PFV10 class="titre" width="280"></td>
+                </tr>
+        </table>
+        <script>
+            //Fonction qui va generer toutes les fonctions 
+           function inputToOutput(inputId, outputId) {
+               document.getElementById(outputId).innerHTML = document.getElementById(inputId).value;
+           }
+
+           //Fonction pour mettre le groupe
+           function G() {
+               inputToOutput("G", "GV")
+           }
+
+            //Fonction pour trouver le temps ideal par activite
+            function T() {
+                var T = document.getElementById("T").value;
+                var TR = T/10;
+                document.getElementById("insert").innerHTML = TR;
+                document.getElementById("TmpV1").innerHTML = TR;
+                document.getElementById("TmpV2").innerHTML = TR;
+                document.getElementById("TmpV3").innerHTML = TR;
+                document.getElementById("TmpV4").innerHTML = TR;
+                document.getElementById("TmpV5").innerHTML = TR;
+                document.getElementById("TmpV6").innerHTML = TR;
+                document.getElementById("TmpV7").innerHTML = TR;
+                document.getElementById("TmpV8").innerHTML = TR;
+                document.getElementById("TmpV9").innerHTML = TR;
+                document.getElementById("TmpV10").innerHTML = TR;
+            }
+
+            //Fonctions pour les variables pour "Temps"
+
+            function Tmp1() {
+                inputToOutput("Tmp1","TmpV1");
+            }
+
+            function Tmp2() {
+                inputToOutput("Tmp2","TmpV2");
+            }
+            
+            function Tmp3() {
+                inputToOutput("Tmp3","TmpV3");
+            }
+            
+            function Tmp4() {
+                inputToOutput("Tmp4","TmpV4");
+            }
+
+            function Tmp5() {
+                inputToOutput("Tmp5","TmpV5");
+            }
+
+            function Tmp6() {
+                inputToOutput("Tmp6","TmpV6");
+            }
+
+            function Tmp7() {
+                inputToOutput("Tmp7","TmpV7");
+            }
+
+            function Tmp8() {
+                inputToOutput("Tmp8","TmpV8");
+            }
+
+            function Tmp9() {
+                inputToOutput("Tmp9","TmpV9");
+            }
+
+            function Tmp10() {
+                inputToOutput("Tmp10","TmpV10");
+            }
+
+
+            //Fonctions pour les paragraphes pour "Temps"
+            function PT1() {
+                inputToOutput("PT1","PTV1");
+            }
+
+            function PT2() {
+                inputToOutput("PT2","PTV2");
+            }
+
+            function PT3() {
+                inputToOutput("PT3","PTV3");
+            }
+
+            function PT4() {
+                inputToOutput("PT4","PTV4");
+            }
+
+            function PT5() {
+                inputToOutput("PT5","PTV5");
+            }
+
+            function PT6() {
+                inputToOutput("PT6","PTV6");
+            }
+
+            function PT7() {
+                inputToOutput("PT7","PTV7");
+            }
+
+            function PT8() {
+                inputToOutput("PT8","PTV8");
+            }
+
+            function PT9() {
+                inputToOutput("PT9","PTV9");
+            }
+            
+            function PT10() {
+                inputToOutput("PT10","PTV10");
+            }
+
+            //Fonctions pour les variables pour "Activite"
+            function Act1() {
+                inputToOutput("Act1","ActV1");
+            }
+
+            function Act2() {
+                inputToOutput("Act2","ActV2");
+            }
+
+            function Act3() {
+                inputToOutput("Act3","ActV3");
+            }
+
+            function Act4() {
+                inputToOutput("Act4","ActV4");
+            }
+
+            function Act5() {
+                inputToOutput("Act5","ActV5");
+            }
+
+            function Act6() {
+                inputToOutput("Act6","ActV6");
+            }
+
+            function Act7() {
+                inputToOutput("Act7","ActV7");
+            }
+
+            function Act8() {
+                inputToOutput("Act8","ActV8");
+            }
+
+            function Act9() {
+                inputToOutput("Act9","ActV9");
+            }
+
+            function Act10() {
+                inputToOutput("Act10","ActV10");
+            }
+
+            //Fonctions pour les paragraphes pour "Activite"
+            function PA1() {
+                inputToOutput("PA1","PAV1");
+            }
+
+            function PA2() {
+                inputToOutput("PA2","PAV2");
+            }
+
+            function PA3() {
+                inputToOutput("PA3","PAV3");
+            }
+
+            function PA4() {
+                inputToOutput("PA4","PAV4");
+            }
+
+            function PA5() {
+                inputToOutput("PA5","PAV5");
+            }
+
+            function PA6() {
+                inputToOutput("PA6","PAV6");
+            }
+
+            function PA7() {
+                inputToOutput("PA7","PAV7");
+            }
+
+            function PA8() {
+                inputToOutput("PA8","PAV8");
+            }
+
+            function PA9() {
+                inputToOutput("PA9","PAV9");
+            }
+
+            function PA10() {
+                inputToOutput("PA10","PAV10");
+            }
+
+            //Fonctions pour les variables pour "Equipement"
+
+            function Eqp1() {
+                inputToOutput("Eqp1","EqpV1");
+            }
+
+            function Eqp2() {
+                inputToOutput("Eqp2","EqpV2");
+            }
+
+            function Eqp3() {
+                inputToOutput("Eqp3","EqpV3");
+            }
+
+            function Eqp4() {
+                inputToOutput("Eqp4","EqpV4");
+            }
+
+            function Eqp5() {
+                inputToOutput("Eqp5","EqpV5");
+            }
+
+            function Eqp6() {
+                inputToOutput("Eqp6","EqpV6");
+            }
+
+            function Eqp7() {
+                inputToOutput("Eqp7","EqpV7");
+            }
+
+            function Eqp8() {
+                inputToOutput("Eqp8","EqpV8");
+            }
+
+            function Eqp9() {
+                inputToOutput("Eqp9","EqpV9");
+            }
+
+            function Eqp10() {
+                inputToOutput("Eqp10","EqpV10");
+            }
+
+            //Fonctions pour les paragraphes pour "Equipement"
+            function PE1() {
+                inputToOutput("PE1","PEV1");
+            }
+
+            function PE2() {
+                inputToOutput("PE2","PEV2");
+            }
+
+            function PE3() {
+                inputToOutput("PE3","PEV3");
+            }
+
+            function PE4() {
+                inputToOutput("PE4","PEV4");
+            }
+
+            function PE5() {
+                inputToOutput("PE5","PEV5");
+            }
+
+
+            function PE6() {
+                inputToOutput("PE6","PEV6");
+            }
+
+            function PE7() {
+                inputToOutput("PE7","PEV7");
+            }
+
+            function PE8() {
+                inputToOutput("PE8","PEV8");
+            }
+
+            function PE9() {
+                inputToOutput("PE9","PEV9");
+            }
+
+            function PE10() {
+                inputToOutput("PE10","PEV10");
+            }
+
+            //Fonctions pour les variables pour "Fonctions"
+            function For1() {
+                inputToOutput("For1","ForV1");
+            }
+
+            function For2() {
+                inputToOutput("For2","ForV2");
+            }
+
+            function For3() {
+                inputToOutput("For3","ForV3");
+            }
+
+            function For4() {
+                inputToOutput("For4","ForV4");
+            }
+
+            function For5() {
+                inputToOutput("For5","ForV5");
+            }
+
+            function For6() {
+                inputToOutput("For6","ForV6");
+            }
+
+            function For7() {
+                inputToOutput("For7","ForV7");
+            }
+
+            function For8() {
+                inputToOutput("For8","ForV8");
+            }
+
+            function For9() {
+                inputToOutput("For9","ForV9");
+            }
+
+            function For10() {
+                inputToOutput("For10","ForV10");
+            }
+
+            //Fonctions pour les paragraphes pour "Fonctions"
+            function PF1() {
+                inputToOutput("PF1","PFV1");
+            }
+
+            function PF2() {
+                inputToOutput("PF2","PFV2");
+            }
+
+            function PF3() {
+                inputToOutput("PF3","PFV3");
+            }
+
+            function PF4() {
+                inputToOutput("PF4","PFV4");
+            }
+
+            function PF5() {
+                inputToOutput("PF5","PFV5");
+            }
+
+            function PF6() {
+                inputToOutput("PF6","PFV6");
+            }
+            
+            function PF7() {
+                inputToOutput("PF7","PFV7");
+            }
+
+            function PF8() {
+                inputToOutput("PF8","PFV8");
+            }
+
+            function PF9() {
+                inputToOutput("PF9","PFV9");
+            }
+
+            function PF10() {
+                inputToOutput("PF10","PFV10");
+            }
+
+            //Fonction pour imprimer la page
+            function myFunction() {
+                window.print();
+            }
+        </script>
+    </body>
+</html>
